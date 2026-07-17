@@ -1,14 +1,30 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import CalLink from "./CalLink";
 
 const links = [
   { href: "/about", label: "About" },
   { href: "/#services", label: "Services" },
-  { href: "/writing", label: "Writing" },
+  { href: "/writing", label: "Writings" },
   { href: "/contact", label: "Contact" },
 ];
 
+function closeMobileMenu() {
+  const checkbox = document.getElementById("mnav") as HTMLInputElement | null;
+  if (checkbox) checkbox.checked = false;
+}
+
 export default function Nav() {
+  // Close the mobile menu whenever the route changes (client-side navigation
+  // keeps DOM state, so the checkbox would otherwise stay checked).
+  const pathname = usePathname();
+  useEffect(() => {
+    closeMobileMenu();
+  }, [pathname]);
+
   return (
     <div
       style={{
@@ -70,6 +86,11 @@ export default function Nav() {
       />
       <div
         className="m-menu"
+        onClick={(e) => {
+          // Close on any link tap, including same-page anchors (#services)
+          // where the pathname doesn't change.
+          if ((e.target as HTMLElement).closest("a")) closeMobileMenu();
+        }}
         style={{
           boxSizing: "border-box",
           position: "fixed",

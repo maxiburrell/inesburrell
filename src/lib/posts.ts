@@ -1,7 +1,16 @@
 import { sanityFetch } from "@/sanity/client";
 import { recentPostsQuery, allPostsQuery } from "@/sanity/queries";
 import { urlFor } from "@/sanity/client";
-import { fallbackEssays, type EssayCard } from "./fallbackEssays";
+
+export type EssayCard = {
+  title: string;
+  slug: string;
+  category: string;
+  date: string;
+  readingTime: string;
+  image: string;
+  excerpt?: string;
+};
 
 type SanityPost = {
   _id: string;
@@ -22,7 +31,7 @@ export function formatDate(iso: string): string {
   });
 }
 
-function toCard(p: SanityPost, i: number): EssayCard {
+function toCard(p: SanityPost): EssayCard {
   return {
     title: p.title,
     slug: p.slug,
@@ -31,29 +40,27 @@ function toCard(p: SanityPost, i: number): EssayCard {
     readingTime: `${Math.max(1, p.readingTime ?? 5)} min`,
     image: p.heroImage?.asset
       ? urlFor(p.heroImage).width(720).height(400).fit("crop").url()
-      : `/images/ph-essay-${(i % 6) + 1}.jpg`,
+      : "/images/ph-essay-1.jpg",
     excerpt: p.excerpt,
   };
 }
 
-/** Recent essays for the homepage carousel; falls back to design placeholders. */
+/** Recent essays for the homepage carousel. */
 export async function getRecentEssays(): Promise<EssayCard[]> {
   try {
     const posts = await sanityFetch<SanityPost[]>({ query: recentPostsQuery });
-    if (posts?.length) return posts.map(toCard);
+    return (posts ?? []).map(toCard);
   } catch {
-    // Sanity unreachable (e.g. local build without network) — use fallbacks
+    return [];
   }
-  return fallbackEssays;
 }
 
-/** All essays for the archive; falls back to design placeholders. */
+/** All essays for the archive. */
 export async function getAllEssays(): Promise<EssayCard[]> {
   try {
     const posts = await sanityFetch<SanityPost[]>({ query: allPostsQuery });
-    if (posts?.length) return posts.map(toCard);
+    return (posts ?? []).map(toCard);
   } catch {
-    // fall through
+    return [];
   }
-  return fallbackEssays;
 }

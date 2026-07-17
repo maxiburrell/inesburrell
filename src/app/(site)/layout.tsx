@@ -1,6 +1,7 @@
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import CalScript from "@/components/CalScript";
+import GoogleTagManager from "@/components/GoogleTagManager";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://inesburrell.com";
 
@@ -30,6 +31,7 @@ const serviceJsonLd = {
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
+      <GoogleTagManager />
       <CalScript />
       <Nav />
       <main>{children}</main>

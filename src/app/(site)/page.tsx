@@ -398,7 +398,7 @@ export default async function HomePage() {
             {essays.map((e) => (
               <Link
                 key={e.title}
-                href={e.slug ? `/writing/${e.slug}` : "/writing"}
+                href={`/writing/${e.slug}`}
                 className="card-hover"
                 style={{
                   flex: "none",

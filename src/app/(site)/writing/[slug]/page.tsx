@@ -6,7 +6,6 @@ import ArticleBody from "@/components/ArticleBody";
 import { sanityFetch, urlFor, client } from "@/sanity/client";
 import { postBySlugQuery, postSlugsQuery, relatedPostsQuery, recentPostsQuery } from "@/sanity/queries";
 import { formatDate } from "@/lib/posts";
-import { sampleArticle } from "@/lib/sampleArticle";
 
 type SanityPost = {
   _id: string;
@@ -25,17 +24,14 @@ type SanityPost = {
 export async function generateStaticParams() {
   try {
     const slugs = await client.fetch<string[]>(postSlugsQuery);
-    return [...slugs.map((slug) => ({ slug })), { slug: "sample-essay" }];
+    return slugs.map((slug) => ({ slug }));
   } catch {
-    return [{ slug: "sample-essay" }];
+    return [];
   }
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  if (slug === "sample-essay") {
-    return { title: sampleArticle.title, robots: { index: false } };
-  }
   const post = await sanityFetch<SanityPost | null>({ query: postBySlugQuery, params: { slug } });
   if (!post) return {};
   return {
@@ -52,50 +48,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-function SampleEssay() {
-  const a = sampleArticle;
-  return (
-    <ArticleShell
-      category={a.category}
-      dateLabel={a.date}
-      readingTime={a.readingTime}
-      title={
-        <>
-          Has Reality Stopped Obeying <em>Putin?</em>
-        </>
-      }
-      standfirst={a.standfirst}
-      heroImage={a.heroImage}
-      heroCaption={a.heroCaption}
-      related={a.related.map((r) => ({ ...r, slug: null }))}
-    >
-      <div className="article-body">
-        {a.paragraphs.map((p) => (
-          <p key={p.slice(0, 24)}>{p}</p>
-        ))}
-        <div className="article-pullquote">
-          <div>{a.pullQuote}</div>
-        </div>
-        {a.paragraphsAfterQuote.map((p) => (
-          <p key={p.slice(0, 24)}>{p}</p>
-        ))}
-        <figure className="article-figure">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={a.midImage} alt="" style={{ width: "100%", display: "block" }} />
-          <figcaption>{a.midImageCaption}</figcaption>
-        </figure>
-        {a.closingParagraphs.map((p) => (
-          <p key={p.slice(0, 24)}>{p}</p>
-        ))}
-      </div>
-    </ArticleShell>
-  );
-}
-
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-
-  if (slug === "sample-essay") return <SampleEssay />;
 
   const post = await sanityFetch<SanityPost | null>({ query: postBySlugQuery, params: { slug } });
   if (!post) notFound();

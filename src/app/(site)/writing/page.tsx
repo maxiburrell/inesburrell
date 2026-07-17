@@ -81,7 +81,7 @@ export default async function WritingPage() {
       {featured && (
         <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 clamp(24px,5vw,72px)" }}>
           <Link
-            href={featured.slug ? `/writing/${featured.slug}` : "/writing/sample-essay"}
+            href={`/writing/${featured.slug}`}
             className="m-grid1 card-hover"
             style={{
               display: "grid",

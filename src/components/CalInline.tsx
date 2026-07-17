@@ -10,8 +10,9 @@ const CONTAINER_ID = "my-cal-inline-15min";
 
 /**
  * Mounts the Cal.com inline calendar into the booking column on /contact.
- * Relies on the "15min" namespace initialised globally by CalScript (in the
- * site layout); polls briefly until the embed queue is available.
+ * Uses the dedicated "15min-inline" namespace (initialised by CalScript)
+ * so event type details stay hidden here without affecting the popup
+ * embeds elsewhere; polls briefly until the embed queue is available.
  */
 export default function CalInline({ style }: { style?: React.CSSProperties }) {
   useEffect(() => {
@@ -20,7 +21,7 @@ export default function CalInline({ style }: { style?: React.CSSProperties }) {
       if (!el) return true; // unmounted — stop trying
       if (el.childElementCount > 0) return true; // already embedded
       const cal = (window as unknown as { Cal?: CalApi }).Cal;
-      const ns = cal?.ns?.["15min"];
+      const ns = cal?.ns?.["15min-inline"];
       if (!ns) return false; // CalScript not ready yet
       ns("inline", {
         elementOrSelector: `#${CONTAINER_ID}`,

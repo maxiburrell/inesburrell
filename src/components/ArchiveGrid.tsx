@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import type { EssayCard } from "@/lib/fallbackEssays";
+import type { EssayCard } from "@/lib/posts";
 
 const serif = "var(--font-serif),serif";
 
@@ -42,7 +42,7 @@ export default function ArchiveGrid({ essays }: { essays: EssayCard[] }) {
         {shown.map((e) => (
           <Link
             key={e.title}
-            href={e.slug ? `/writing/${e.slug}` : "/writing/sample-essay"}
+            href={`/writing/${e.slug}`}
             className="card-hover"
             style={{
               background: "#fff",

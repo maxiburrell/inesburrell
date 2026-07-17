@@ -40,7 +40,7 @@ export default function Footer() {
               <div style={linkCol}>
                 <Link href="/about" className="hover-dim" style={{ textDecoration: "none" }}>About</Link>
                 <Link href="/#services" className="hover-dim" style={{ textDecoration: "none" }}>Services</Link>
-                <Link href="/writing" className="hover-dim" style={{ textDecoration: "none" }}>Writing</Link>
+                <Link href="/writing" className="hover-dim" style={{ textDecoration: "none" }}>Writings</Link>
                 <Link href="/contact" className="hover-dim" style={{ textDecoration: "none" }}>Contact</Link>
               </div>
             </div>
