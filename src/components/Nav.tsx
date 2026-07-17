@@ -87,9 +87,9 @@ export default function Nav() {
       <div
         className="m-menu"
         onClick={(e) => {
-          // Close on any link tap, including same-page anchors (#services)
-          // where the pathname doesn't change.
-          if ((e.target as HTMLElement).closest("a")) closeMobileMenu();
+          // Close on any link or booking-button tap, including same-page
+          // anchors (#services) where the pathname doesn't change.
+          if ((e.target as HTMLElement).closest("a,button")) closeMobileMenu();
         }}
         style={{
           boxSizing: "border-box",

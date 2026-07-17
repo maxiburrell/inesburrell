@@ -24,6 +24,18 @@ a {
   font-family: var(--font-serif), serif;
 }
 
+/* Base reset for CalLink buttons — defined BEFORE .btn-primary/.btn-cream so
+   those classes can still override the background. */
+.cal-btn {
+  border: none;
+  background: transparent;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  text-align: inherit;
+}
+
 /* --- responsive helpers from the v3c design --- */
 @media (max-width: 840px) {
   .m-hide { display: none !important; }
@@ -38,14 +50,14 @@ a {
 #mnav:checked ~ .m-backdrop { opacity: 1 !important; pointer-events: auto !important; }
 #mnav:checked ~ .m-menu { transform: translateX(0) !important; }
 #mnav:checked ~ .m-burger span { background: #f8f4ec !important; }
-.m-menu a { opacity: 0; transform: translateX(28px); transition: opacity .35s ease, transform .35s ease; }
-#mnav:checked ~ .m-menu a { opacity: 1; transform: none; }
-#mnav:checked ~ .m-menu a:nth-child(1) { transition-delay: .08s; }
-#mnav:checked ~ .m-menu a:nth-child(2) { transition-delay: .13s; }
-#mnav:checked ~ .m-menu a:nth-child(3) { transition-delay: .18s; }
-#mnav:checked ~ .m-menu a:nth-child(4) { transition-delay: .23s; }
-#mnav:checked ~ .m-menu a:nth-child(5) { transition-delay: .28s; }
-#mnav:checked ~ .m-menu a:nth-child(6) { transition-delay: .33s; }
+.m-menu > * { opacity: 0; transform: translateX(28px); transition: opacity .35s ease, transform .35s ease; }
+#mnav:checked ~ .m-menu > * { opacity: 1; transform: none; }
+#mnav:checked ~ .m-menu > :nth-child(1) { transition-delay: .08s; }
+#mnav:checked ~ .m-menu > :nth-child(2) { transition-delay: .13s; }
+#mnav:checked ~ .m-menu > :nth-child(3) { transition-delay: .18s; }
+#mnav:checked ~ .m-menu > :nth-child(4) { transition-delay: .23s; }
+#mnav:checked ~ .m-menu > :nth-child(5) { transition-delay: .28s; }
+#mnav:checked ~ .m-menu > :nth-child(6) { transition-delay: .33s; }
 
 /* --- hover states (the design used style-hover attributes) --- */
 .btn-primary { background: var(--oxblood); color: var(--cream); transition: background .2s ease; }

@@ -8,8 +8,10 @@ const CAL_CONFIG = JSON.stringify({
 });
 
 /**
- * A "Book a call" trigger. Renders an anchor with Cal.com data attributes;
- * the embed script loaded by CalScript turns clicks into the booking modal.
+ * A "Book a call" trigger. Renders a button with Cal.com data attributes;
+ * the embed script loaded by CalScript opens the booking popup on click.
+ * Deliberately not an anchor: it must never navigate to app.cal.eu, only
+ * open the popup. Base button resets live in the .cal-btn class.
  */
 export default function CalLink({
   children,
@@ -21,15 +23,15 @@ export default function CalLink({
   style?: CSSProperties;
 }) {
   return (
-    <a
-      href="https://app.cal.eu/inesburrell/15min"
+    <button
+      type="button"
       data-cal-link={CAL_LINK}
       data-cal-namespace={CAL_NAMESPACE}
       data-cal-config={CAL_CONFIG}
-      className={className}
+      className={className ? `cal-btn ${className}` : "cal-btn"}
       style={style}
     >
       {children}
-    </a>
+    </button>
   );
 }
