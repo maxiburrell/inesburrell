@@ -2,6 +2,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import CalScript from "@/components/CalScript";
 import GoogleTagManager from "@/components/GoogleTagManager";
+import CookieConsent from "@/components/CookieConsent";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://inesburrell.com";
 
@@ -32,6 +33,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
   return (
     <>
       <GoogleTagManager />
+      <CookieConsent />
       <CalScript />
       <Nav />
       <main>{children}</main>
