@@ -1,0 +1,17 @@
+name: Sync Substack essays into Sanity
+
+on:
+  schedule:
+    # Every 3 hours (UTC). GitHub may delay scheduled runs by a few minutes.
+    - cron: "0 */3 * * *"
+  workflow_dispatch: {}
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call the site's sync endpoint
+        run: |
+          curl --fail --silent --show-error -X POST \
+            "${{ secrets.SYNC_SITE_URL }}/api/sync-substack" \
+            -H "Authorization: Bearer ${{ secrets.SYNC_SECRET }}"

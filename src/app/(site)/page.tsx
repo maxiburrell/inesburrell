@@ -156,11 +156,11 @@ export default async function HomePage() {
         </div>
       </div>
       <div style={{ maxWidth: 1440, margin: "72px auto 0", padding: "0 clamp(24px,5vw,72px)" }}>
-        <div style={{ height: "min(420px,58vw)" }}>
+        <div style={{ height: "min(560px,43vw)" }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/hero-brussels.jpg"
-            alt="The European Parliament chamber in Brussels"
+            src="/images/hero-broadcast.jpg"
+            alt="Ines Burrell giving live broadcast commentary"
             style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
           />
         </div>
@@ -183,8 +183,8 @@ export default async function HomePage() {
           <div style={{ height: "min(360px,52vw)", marginTop: 36 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/ph-problem.jpg"
-              alt="Archive detail"
+              src="/images/eu-parliament.jpg"
+              alt="The European Parliament chamber in Brussels"
               style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
           </div>
@@ -299,12 +299,11 @@ export default async function HomePage() {
       <div id="writing" style={{ background: "#f8f4ec" }}>
         <div style={{ maxWidth: 1440, margin: "0 auto", padding: "clamp(64px,13vw,120px) 0 100px" }}>
           <div
-            className="m-grid1"
             style={{
-              display: "grid",
-              gridTemplateColumns: "minmax(0,1fr) 240px auto",
+              display: "flex",
+              justifyContent: "space-between",
               alignItems: "end",
-              gap: "clamp(24px,4vw,56px)",
+              gap: 48,
               padding: "0 clamp(24px,5vw,72px)",
             }}
           >
@@ -321,19 +320,6 @@ export default async function HomePage() {
                 }}
               >
                 Published author. <em>Live commentator.</em> Weekly analysis.
-              </div>
-            </div>
-            <div style={{ maxWidth: 240 }}>
-              <div style={{ height: 290 }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/broadcast-ines.jpg"
-                  alt="Ines Burrell giving live broadcast commentary"
-                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-                />
-              </div>
-              <div style={{ fontSize: 13, lineHeight: 1.5, opacity: 0.55, marginTop: 10 }}>
-                Live on air: &ldquo;War fatigue: global focus and long-term outlook&rdquo;
               </div>
             </div>
             <Link
