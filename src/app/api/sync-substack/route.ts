@@ -184,11 +184,28 @@ async function uploadImage(
 }
 
 export async function GET() {
+  // Health check: also verifies the conversion libraries load in this runtime.
+  let tools = "ok";
+  let feed = "unchecked";
+  try {
+    const t = await loadTools();
+    buildBlockContentType(t.Schema);
+  } catch (err) {
+    tools = err instanceof Error ? `${err.name}: ${err.message}` : String(err);
+  }
+  try {
+    const r = await fetch(FEED_URL, { headers: { "user-agent": "inesburrell.com sync" }, cache: "no-store" });
+    feed = `HTTP ${r.status}`;
+  } catch (err) {
+    feed = err instanceof Error ? `${err.name}: ${err.message}` : String(err);
+  }
   return NextResponse.json({
     ok: true,
     route: "sync-substack",
     configured: { writeToken: Boolean(process.env.SANITY_WRITE_TOKEN), syncSecret: Boolean(process.env.SYNC_SECRET) },
-    hint: "POST with Authorization: Bearer <SYNC_SECRET> to run the sync",
+    tools,
+    feed,
+    hint: "POST with Authorization: Bearer <SYNC_SECRET> (and X-Sanity-Token) to run the sync",
   });
 }
 

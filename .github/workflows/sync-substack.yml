@@ -12,7 +12,13 @@ jobs:
     steps:
       - name: Call the site's sync endpoint
         run: |
-          curl --fail --silent --show-error -X POST \
+          response=$(curl --silent --show-error -X POST \
             "${{ secrets.SYNC_SITE_URL }}/api/sync-substack" \
             -H "Authorization: Bearer ${{ secrets.SYNC_SECRET }}" \
-            -H "X-Sanity-Token: ${{ secrets.SANITY_WRITE_TOKEN }}"
+            -H "X-Sanity-Token: ${{ secrets.SANITY_WRITE_TOKEN }}" \
+            -w "\n%{http_code}")
+          body=$(echo "$response" | sed '$d')
+          code=$(echo "$response" | tail -n1)
+          echo "HTTP $code"
+          echo "$body"
+          [ "$code" = "200" ] || exit 1
