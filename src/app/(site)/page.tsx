@@ -299,12 +299,11 @@ export default async function HomePage() {
       <div id="writing" style={{ background: "#f8f4ec" }}>
         <div style={{ maxWidth: 1440, margin: "0 auto", padding: "clamp(64px,13vw,120px) 0 100px" }}>
           <div
-            className="m-grid1"
             style={{
-              display: "grid",
-              gridTemplateColumns: "minmax(0,1fr) 240px auto",
+              display: "flex",
+              justifyContent: "space-between",
               alignItems: "end",
-              gap: "clamp(24px,4vw,56px)",
+              gap: 48,
               padding: "0 clamp(24px,5vw,72px)",
             }}
           >
@@ -321,17 +320,6 @@ export default async function HomePage() {
                 }}
               >
                 Published author. <em>Live commentator.</em> Weekly analysis.
-              </div>
-            </div>
-            <div style={{ maxWidth: 240 }}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/images/broadcast-ines.jpg"
-                alt="Ines Burrell giving live broadcast commentary"
-                style={{ width: "100%", height: "auto", display: "block" }}
-              />
-              <div style={{ fontSize: 13, lineHeight: 1.5, opacity: 0.55, marginTop: 10 }}>
-                Live on air: &ldquo;War fatigue: global focus and long-term outlook&rdquo;
               </div>
             </div>
             <Link
