@@ -12,15 +12,15 @@ const serif = "var(--font-serif),serif";
 const steps = [
   {
     n: "01",
-    d: "Have the decision in mind — the clearer the question, the more useful I can be in a short call.",
+    d: "Have the decision in mind: the clearer the question, the more useful I can be in a short call.",
   },
   {
     n: "02",
-    d: "Don’t prepare a briefing. I will ask a lot of questions — that is the method.",
+    d: "Don’t prepare a briefing. I will ask a lot of questions. That is the method.",
   },
   {
     n: "03",
-    d: "Anything discussed stays between us — before, during and after any engagement.",
+    d: "Anything discussed stays between us: before, during and after any engagement.",
   },
 ];
 

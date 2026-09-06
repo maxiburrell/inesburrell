@@ -5,7 +5,7 @@ export const siteSettings = defineType({
   title: "Site settings",
   type: "document",
   fields: [
-    defineField({ name: "siteTitle", type: "string", initialValue: "Ines Burrell — Geopolitical Advisory" }),
+    defineField({ name: "siteTitle", type: "string", initialValue: "Ines Burrell | Geopolitical Advisory" }),
     defineField({ name: "description", type: "text", rows: 2 }),
     defineField({ name: "contactEmail", type: "string", initialValue: "info@inesburrell.com" }),
     defineField({ name: "bookingUrl", type: "url", description: "Cal.com booking link." }),

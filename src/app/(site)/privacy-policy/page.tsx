@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Privacy Policy | Ines Burrell",
   description:
-    "How your information is handled — what is collected, why, and your rights. Privacy policy for inesburrell.com.",
+    "How your information is handled: what is collected, why, and your rights. Privacy policy for inesburrell.com.",
 };
 
 const serif = "var(--font-serif),serif";
@@ -15,11 +15,11 @@ const sections = [
   },
   {
     h: "What I collect",
-    p: "Information you give me directly: your name, email address, phone number (if provided), organisation, and the content of your messages through the contact form or booking system. This site does not run advertising or sell data — full stop.",
+    p: "Information you give me directly: your name, email address, phone number (if provided), organisation, and the content of your messages through the contact form or booking system. This site does not run advertising or sell data. Full stop.",
   },
   {
     h: "Why I collect it",
-    p: "To respond to your enquiry, prepare for and conduct consultations, deliver commissioned work, and — only if you subscribe — send you the weekly essay. Nothing else. The legal bases are your consent and the legitimate interest of responding to enquiries you initiate.",
+    p: "To respond to your enquiry, prepare for and conduct consultations, deliver commissioned work, and, only if you subscribe, send you the weekly essay. Nothing else. The legal bases are your consent and the legitimate interest of responding to enquiries you initiate.",
   },
   {
     h: "Client confidentiality",
@@ -76,7 +76,7 @@ export default function PrivacyPolicyPage() {
           </div>
         ))}
         <div style={{ fontSize: 16, lineHeight: 1.7, opacity: 0.7, marginTop: 36 }}>
-          Questions about this policy —{" "}
+          Questions about this policy?{" "}
           <a href="mailto:info@inesburrell.com" style={{ color: "#6e222d" }}>
             info@inesburrell.com
           </a>

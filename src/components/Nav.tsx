@@ -43,7 +43,7 @@ export default function Nav() {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src="/images/logo-header.png"
-          alt="Ines Burrell — Geopolitical Advisory"
+          alt="Ines Burrell, Geopolitical Advisory"
           style={{ height: 44, display: "block" }}
         />
       </Link>

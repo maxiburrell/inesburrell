@@ -30,7 +30,7 @@ export default function Footer() {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/logo-footer-white.png"
-              alt="Ines Burrell — Geopolitical Advisory"
+              alt="Ines Burrell, Geopolitical Advisory"
               style={{ height: 130, display: "block", marginLeft: -6 }}
             />
           </div>
@@ -48,7 +48,7 @@ export default function Footer() {
               <div style={label}>Follow</div>
               <div style={linkCol}>
                 <a href="https://inesburrell.substack.com" target="_blank" rel="noopener" className="hover-dim" style={{ textDecoration: "none" }}>
-                  Liminal Lines — Substack
+                  Liminal Lines on Substack
                 </a>
                 <a href="https://www.linkedin.com/in/ines-burrell-16a638" target="_blank" rel="noopener" className="hover-dim" style={{ textDecoration: "none" }}>
                   LinkedIn
@@ -86,7 +86,7 @@ export default function Footer() {
             opacity: 0.55,
           }}
         >
-          <span>© {new Date().getFullYear()} Ines Burrell — Geopolitical Advisory · United Kingdom</span>
+          <span>© {new Date().getFullYear()} Ines Burrell, Geopolitical Advisory · United Kingdom</span>
           <Link href="/privacy-policy" style={{ textDecoration: "none", borderBottom: "1px solid rgba(248,244,236,.3)" }}>
             Privacy
           </Link>

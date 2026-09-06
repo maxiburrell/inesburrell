@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import CalLink from "@/components/CalLink";
 
 export const metadata: Metadata = {
-  title: "Geopolitical Analyst — About Ines Burrell",
+  title: "Geopolitical Analyst | About Ines Burrell",
   description:
     "Ines Burrell is a geopolitical analyst and geopolitical risk analyst covering Russia, Western and Eastern Europe, Eurasia, and European security. Born in the Baltics, 25 years in Western Europe.",
 };
@@ -18,8 +18,8 @@ const eyebrow: React.CSSProperties = {
 const serif = "var(--font-serif),serif";
 
 const stats = [
-  { n: "5", c: "Languages — English, Latvian, Russian, working Portuguese and Ukrainian" },
-  { n: "2", c: "Europes — born in the Baltics, lived in Western Europe for 25+ years" },
+  { n: "5", c: "Languages: English, Latvian, Russian, working Portuguese and Ukrainian" },
+  { n: "2", c: "Europes: born in the Baltics, lived in Western Europe for 25+ years" },
   { n: "MA", c: "International Relations, University of Exeter" },
   { n: "Live", c: "Published in Persuasion: Live commentator. Weekly analysis." },
 ];
@@ -99,7 +99,7 @@ export default function AboutPage() {
         <div style={{ ...eyebrow, paddingTop: 8 }}>Two Europes</div>
         <div style={{ maxWidth: 680 }}>
           <div style={{ fontFamily: serif, fontSize: 32, lineHeight: 1.5, fontWeight: 400 }}>
-            I understand Europe from the position of an Eastern European, because I was born in the Baltics — and a
+            I understand Europe from the position of an Eastern European, because I was born in the Baltics, and a
             Western European, because this is where I have lived half my life. <em>They are not the same.</em>
           </div>
           <p style={{ fontSize: 18, lineHeight: 1.8, opacity: 0.72, margin: "28px 0 0" }}>

@@ -6,7 +6,7 @@ export default function NotFound() {
   return (
     <div style={{ maxWidth: 840, margin: "0 auto", padding: "clamp(80px,16vw,160px) 24px", textAlign: "center" }}>
       <div style={{ fontSize: 11, letterSpacing: ".26em", textTransform: "uppercase", color: "#6e222d", fontWeight: 600 }}>
-        404 — Not found
+        404 · Not found
       </div>
       <h1 style={{ fontFamily: serif, fontSize: "min(56px,8vw)", fontWeight: 400, lineHeight: 1.1, margin: "26px 0 0" }}>
         This page has gone <em>quiet</em>.

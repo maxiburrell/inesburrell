@@ -4,7 +4,7 @@ import CalLink from "@/components/CalLink";
 
 export const metadata: Metadata = {
   title: "Message Received | Ines Burrell",
-  description: "Thank you — your message is with me. You will hear back within two working days.",
+  description: "Thank you, your message is with me. You will hear back within two working days.",
   robots: { index: false },
 };
 
@@ -51,7 +51,7 @@ export default function ThankYouPage() {
             marginRight: "auto",
           }}
         >
-          You will hear back from me — not an autoresponder — within two working days. Everything you have written is
+          You will hear back from me, not an autoresponder, within two working days. Everything you have written is
           confidential.
         </div>
       </div>

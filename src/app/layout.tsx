@@ -25,8 +25,8 @@ const sourceSans = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://inesburrell.com"),
   title: {
-    default: "Ines Burrell — Geopolitical Advisory",
-    template: "%s | Ines Burrell — Geopolitical Advisory",
+    default: "Ines Burrell | Geopolitical Advisory",
+    template: "%s | Ines Burrell",
   },
   description:
     "Bespoke geopolitical advisory and political risk consulting. Russia, Eastern Europe and Eurasia expertise for businesses and organisations navigating global uncertainty.",

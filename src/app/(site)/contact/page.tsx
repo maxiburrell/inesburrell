@@ -5,7 +5,7 @@ import ContactForm from "@/components/ContactForm";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Ines Burrell — write about what you're facing, or book a 30-minute introductory call directly. Every enquiry is confidential.",
+    "Get in touch with Ines Burrell: write about what you're facing, or book a 30-minute introductory call directly. Every enquiry is confidential.",
 };
 
 const eyebrow: React.CSSProperties = {
@@ -47,7 +47,7 @@ export default function ContactPage() {
         </h1>
         <div style={{ fontSize: 18, lineHeight: 1.7, opacity: 0.72, marginTop: 22, marginBottom: 40, maxWidth: 560 }}>
           Write to me about what you&rsquo;re facing, or book a call directly. Either way, the first conversation is
-          about understanding your situation — and it is confidential.
+          about understanding your situation, and it is confidential.
         </div>
       </div>
 
@@ -84,7 +84,7 @@ export default function ContactPage() {
           <div style={{ fontFamily: serif, fontSize: 22, color: "#6e222d" }}>02</div>
           <div style={{ fontFamily: serif, fontSize: 34, fontWeight: 400, marginTop: 12 }}>Book a call</div>
           <div style={{ fontSize: 16, lineHeight: 1.65, opacity: 0.7, marginTop: 10, maxWidth: 440 }}>
-            A 30-minute introductory call. We discuss your needs and goals — no charge, no obligation.
+            A 30-minute introductory call. We discuss your needs and goals. No charge, no obligation.
           </div>
           {/* Cal.com inline embed */}
           <CalInline

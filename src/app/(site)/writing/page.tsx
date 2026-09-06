@@ -6,7 +6,7 @@ import { getAllEssays } from "@/lib/posts";
 export const metadata: Metadata = {
   title: "Writing on European Security Strategy, Russia & Geopolitics",
   description:
-    "Essays on Russia, Eastern Europe, European security strategy and the politics behind the headlines. By geopolitical analyst Ines Burrell — published in Persuasion and Liminal Lines.",
+    "Essays on Russia, Eastern Europe, European security strategy and the politics behind the headlines. By geopolitical analyst Ines Burrell, published in Persuasion and Liminal Lines.",
 };
 
 const serif = "var(--font-serif),serif";
@@ -112,7 +112,7 @@ export default async function WritingPage() {
                   fontWeight: 600,
                 }}
               >
-                <span style={{ color: "#6e222d" }}>Latest — {featured.category}</span>
+                <span style={{ color: "#6e222d" }}>Latest · {featured.category}</span>
                 <span style={{ opacity: 0.5 }}>{featured.date}</span>
               </div>
               <div style={{ fontFamily: serif, fontSize: "clamp(22px,3.67vw,44px)", lineHeight: 1.12, fontWeight: 400 }}>

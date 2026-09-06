@@ -7,7 +7,7 @@ import { getRecentEssays } from "@/lib/posts";
 export const metadata: Metadata = {
   title: "Political Risk Consulting & Geopolitical Advisory | Ines Burrell",
   description:
-    "Political risk consulting and geopolitical risk advisory for businesses and organisations. Russia, Eastern Europe and Eurasia expertise. Direct access to the analyst — book a call.",
+    "Political risk consulting and geopolitical risk advisory for businesses and organisations. Russia, Eastern Europe and Eurasia expertise. Direct access to the analyst. Book a call.",
 };
 
 const eyebrow: React.CSSProperties = {
@@ -21,8 +21,8 @@ const eyebrow: React.CSSProperties = {
 const serif = "var(--font-serif),serif";
 
 const stats = [
-  { n: "5", c: "Languages — English, Latvian, Russian, working Portuguese and Ukrainian" },
-  { n: "2", c: "Europes — born in the Baltics, lived in Western Europe for 25+ years" },
+  { n: "5", c: "Languages: English, Latvian, Russian, working Portuguese and Ukrainian" },
+  { n: "2", c: "Europes: born in the Baltics, lived in Western Europe for 25+ years" },
   { n: "MA", c: "International Relations, University of Exeter" },
   { n: "Live", c: "Published in Persuasion · live broadcast commentary" },
 ];
@@ -63,11 +63,11 @@ const promises = [
 const faqs: Faq[] = [
   {
     q: "What does geopolitical advisory actually involve?",
-    a: "Geopolitical advisory is the analysis of political environments outside your country — how governments, conflicts, elections, sanctions and international relationships interact, and what that means for your specific business decisions. Unlike news coverage, it is targeted analysis built to answer your individual problem or question.",
+    a: "Geopolitical advisory is the analysis of political environments outside your country: how governments, conflicts, elections, sanctions and international relationships interact, and what that means for your specific business decisions. Unlike news coverage, it is targeted analysis built to answer your individual problem or question.",
   },
   {
     q: "How is a geopolitical analyst different from a general consultant?",
-    a: "A general consultant looks at your organisation — its structure, strategy, and operations. A geopolitical analyst looks at the political environment your organisation operates in, and tells you how that environment can or will affect your business.",
+    a: "A general consultant looks at your organisation: its structure, strategy, and operations. A geopolitical analyst looks at the political environment your organisation operates in, and tells you how that environment can or will affect your business.",
   },
   {
     q: "How is this different from just following the news?",
@@ -102,7 +102,7 @@ export default async function HomePage() {
         }}
       >
         <div>
-          <div style={eyebrow}>Geopolitical advisory — Russia · Eastern Europe · Eurasia</div>
+          <div style={eyebrow}>Geopolitical advisory · Russia · Eastern Europe · Eurasia</div>
           <h1
             style={{
               fontFamily: serif,

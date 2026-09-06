@@ -116,7 +116,7 @@ export default function ArticleShell({
           <div>
             <div style={{ fontFamily: serif, fontSize: 22 }}>Ines Burrell</div>
             <div style={{ fontSize: 15, lineHeight: 1.6, opacity: 0.7, marginTop: 5 }}>
-              Geopolitical analyst and advisor — Russia, Eastern Europe, Eurasia. Former journalist; published in
+              Geopolitical analyst and advisor: Russia, Eastern Europe, Eurasia. Former journalist; published in
               Persuasion; live broadcast commentator.{" "}
               <Link href="/about" style={{ color: "#6e222d" }}>
                 About the practice →
@@ -200,7 +200,7 @@ export default function ArticleShell({
               </Link>
             ))}
             <div style={{ fontSize: 15, opacity: 0.65, marginTop: 26 }}>
-              If this analysis is relevant to a decision you&rsquo;re facing —{" "}
+              If this analysis is relevant to a decision you&rsquo;re facing,{" "}
               <Link href="/contact" style={{ color: "#6e222d" }}>
                 get in touch
               </Link>

@@ -20,7 +20,7 @@ const personJsonLd = {
 const serviceJsonLd = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "Ines Burrell — Geopolitical Advisory",
+  name: "Ines Burrell | Geopolitical Advisory",
   url: SITE_URL,
   description:
     "Bespoke geopolitical advisory and political risk consulting: written reports, strategic advisory and ongoing monitoring. Specialism in Russia, Eastern Europe and Eurasia.",
