@@ -210,8 +210,14 @@ async function runSync(req: NextRequest) {
   if (!secret || provided !== secret) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  if (!process.env.SANITY_WRITE_TOKEN) {
-    return NextResponse.json({ error: "SANITY_WRITE_TOKEN is not set" }, { status: 500 });
+  // The write token can come from Vercel env or, as a fallback, from the
+  // authenticated caller (the GitHub workflow sends it as X-Sanity-Token).
+  const writeToken = process.env.SANITY_WRITE_TOKEN || req.headers.get("x-sanity-token") || "";
+  if (!writeToken) {
+    return NextResponse.json(
+      { error: "No Sanity write token: set SANITY_WRITE_TOKEN in Vercel or send X-Sanity-Token from the workflow" },
+      { status: 500 },
+    );
   }
 
   const { JSDOM, Schema, htmlToBlocks, randomKey } = await loadTools();
@@ -221,7 +227,7 @@ async function runSync(req: NextRequest) {
     projectId,
     dataset,
     apiVersion,
-    token: process.env.SANITY_WRITE_TOKEN,
+    token: writeToken,
     useCdn: false,
   });
 

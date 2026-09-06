@@ -14,4 +14,5 @@ jobs:
         run: |
           curl --fail --silent --show-error -X POST \
             "${{ secrets.SYNC_SITE_URL }}/api/sync-substack" \
-            -H "Authorization: Bearer ${{ secrets.SYNC_SECRET }}"
+            -H "Authorization: Bearer ${{ secrets.SYNC_SECRET }}" \
+            -H "X-Sanity-Token: ${{ secrets.SANITY_WRITE_TOKEN }}"
