@@ -183,8 +183,8 @@ export default async function HomePage() {
           <div style={{ height: "min(360px,52vw)", marginTop: 36 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/ph-problem.jpg"
-              alt="Archive detail"
+              src="/images/portrait-ines-thinking-colour.jpg"
+              alt="Ines Burrell"
               style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
           </div>
