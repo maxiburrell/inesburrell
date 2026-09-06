@@ -2,10 +2,20 @@ import { NextResponse, type NextRequest } from "next/server";
 import { revalidateTag } from "next/cache";
 import { createClient } from "next-sanity";
 import { XMLParser } from "fast-xml-parser";
-import { JSDOM } from "jsdom";
-import { Schema } from "@sanity/schema";
-import { htmlToBlocks, randomKey } from "@sanity/block-tools";
 import { apiVersion, dataset, projectId } from "@/sanity/env";
+import type { JSDOM as JSDOMType } from "jsdom";
+
+// Heavy DOM/conversion libraries are loaded lazily inside the handler so a
+// problem with them surfaces as a JSON error rather than a crash on import.
+async function loadTools() {
+  const [{ JSDOM }, { Schema }, { htmlToBlocks, randomKey }] = await Promise.all([
+    import("jsdom"),
+    import("@sanity/schema"),
+    import("@sanity/block-tools"),
+  ]);
+  return { JSDOM, Schema, htmlToBlocks, randomKey };
+}
+type Tools = Awaited<ReturnType<typeof loadTools>>;
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -24,7 +34,8 @@ const FEED_URL = "https://inesburrell.substack.com/feed";
  */
 
 // Minimal schema so block-tools knows which HTML maps to which blocks.
-const blockContentType = Schema.compile({
+function buildBlockContentType(Schema: Tools["Schema"]) {
+  return Schema.compile({
   name: "sync",
   types: [
     {
@@ -60,8 +71,9 @@ const blockContentType = Schema.compile({
     },
   ],
 })
-  .get("post")
-  .fields.find((f: { name: string }) => f.name === "body").type;
+    .get("post")
+    .fields.find((f: { name: string }) => f.name === "body").type;
+}
 
 const CATEGORY_RULES: [string, RegExp][] = [
   ["category-russia", /\b(russia|putin|kremlin|moscow|ukrain|mobilisation|rouble|donbas|crimea)\b/i],
@@ -99,7 +111,7 @@ function stripHtml(html: string): string {
 }
 
 /** Remove Substack chrome and turn figures into plain <img> tags block-tools can read. */
-function cleanHtml(html: string, heroUrl: string | null): string {
+function cleanHtml(JSDOM: typeof JSDOMType, html: string, heroUrl: string | null): string {
   const dom = new JSDOM(`<body>${html}</body>`);
   const doc = dom.window.document;
 
@@ -171,7 +183,28 @@ async function uploadImage(
   }
 }
 
+export async function GET() {
+  return NextResponse.json({
+    ok: true,
+    route: "sync-substack",
+    configured: { writeToken: Boolean(process.env.SANITY_WRITE_TOKEN), syncSecret: Boolean(process.env.SYNC_SECRET) },
+    hint: "POST with Authorization: Bearer <SYNC_SECRET> to run the sync",
+  });
+}
+
 export async function POST(req: NextRequest) {
+  try {
+    return await runSync(req);
+  } catch (err) {
+    console.error("sync-substack failed", err);
+    return NextResponse.json(
+      { error: err instanceof Error ? `${err.name}: ${err.message}` : String(err) },
+      { status: 500 },
+    );
+  }
+}
+
+async function runSync(req: NextRequest) {
   const secret = process.env.SYNC_SECRET;
   const provided = req.headers.get("authorization")?.replace(/^Bearer\s+/i, "") ?? req.nextUrl.searchParams.get("secret");
   if (!secret || provided !== secret) {
@@ -180,6 +213,9 @@ export async function POST(req: NextRequest) {
   if (!process.env.SANITY_WRITE_TOKEN) {
     return NextResponse.json({ error: "SANITY_WRITE_TOKEN is not set" }, { status: 500 });
   }
+
+  const { JSDOM, Schema, htmlToBlocks, randomKey } = await loadTools();
+  const blockContentType = buildBlockContentType(Schema);
 
   const client = createClient({
     projectId,
@@ -226,7 +262,7 @@ export async function POST(req: NextRequest) {
       const description = stripHtml(String(item.description ?? ""));
       const pubDate = new Date(String(item.pubDate ?? Date.now())).toISOString();
 
-      const cleaned = cleanHtml(html, heroUrl);
+      const cleaned = cleanHtml(JSDOM, html, heroUrl);
 
       const blocks = htmlToBlocks(cleaned, blockContentType, {
         parseHtml: (h: string) => new JSDOM(h).window.document,
