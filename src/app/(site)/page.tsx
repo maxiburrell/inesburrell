@@ -21,8 +21,8 @@ const eyebrow: React.CSSProperties = {
 const serif = "var(--font-serif),serif";
 
 const stats = [
-  { n: "5", c: "Languages — English, Latvian, Russian, Portuguese, working Ukrainian" },
-  { n: "2", c: "Europes — born in the Baltics, half a life lived in Western Europe" },
+  { n: "5", c: "Languages — English, Latvian, Russian, working Portuguese and Ukrainian" },
+  { n: "2", c: "Europes — born in the Baltics, lived in Western Europe for 25+ years" },
   { n: "MA", c: "International Relations, University of Exeter" },
   { n: "Live", c: "Published in Persuasion · live broadcast commentary" },
 ];
@@ -30,18 +30,18 @@ const stats = [
 const services = [
   {
     n: "01",
-    t: "Written reports",
-    d: "Analysis of current, past and possible future events in a country, region or group of countries, tailored to your goals — sanctions advisory, due diligence, risk assessment, market entry and exit.",
+    t: "Written analysis",
+    d: "Analysis of past, current and possible future events in a country, region or group of countries, tailored to your goals: sanctions advisory, due diligence, risk assessment, market entry and exit.",
   },
   {
     n: "02",
     t: "Strategic advisory",
-    d: "In-person or remote sessions where we discuss your goals and find solutions that depend on timely understanding of the geopolitical landscape.",
+    d: "In-person or remote sessions where we work through your goals against the geopolitical landscape: the threats, the opportunities and the pathways.",
   },
   {
     n: "03",
-    t: "Ongoing reports",
-    d: "Assessing changes and monitoring situations in specific regions or countries as they develop.",
+    t: "Monitoring and alerts",
+    d: "Continuous monitoring of a defined region or situation, with regular written briefings and an alert the moment something significant happens.",
   },
 ];
 
@@ -49,12 +49,12 @@ const process = [
   { n: "01", t: "Get in touch", body: <>Use the <Link href="/contact" style={{ color: "#6e222d", textDecoration: "underline" }}>contact form</Link>, or book a call directly.</> },
   { n: "02", t: "We talk", body: <>We discuss your needs and your goals.</> },
   { n: "03", t: "Proposal", body: <>You receive a proposal: deliverables, timeline, fee.</> },
-  { n: "04", t: "Follow-up", body: <>After delivery, a follow-up call — findings, next steps, future needs.</> },
+  { n: "04", t: "Delivery and debrief", body: <>You receive the work, and we talk it through: findings, next steps, future needs.</> },
 ];
 
 const promises = [
-  "The analysis you will receive will always be specific to your situation, never generic or recycled.",
-  "I will ask a lot of questions. Your questions will become mine.",
+  "The analysis you receive will always be specific to your situation, never generic or recycled.",
+  "I will ask a lot of questions. Your problem will become mine.",
   "If you have a problem I cannot solve, I will tell you without wasting your time.",
   "All your information is confidential. I will not discuss you or your operations with any third party. Not even my cat.",
   "I have good manners, but I will not lie to you.",
@@ -63,7 +63,7 @@ const promises = [
 const faqs: Faq[] = [
   {
     q: "What does geopolitical advisory actually involve?",
-    a: "Geopolitical advisory is the analysis of political environments outside your country — how governments, conflicts, elections, sanctions and international relationships interact, and what that means for your specific business decisions. Unlike news coverage, it is targeted analysis built to answer your specific problem or question.",
+    a: "Geopolitical advisory is the analysis of political environments outside your country — how governments, conflicts, elections, sanctions and international relationships interact, and what that means for your specific business decisions. Unlike news coverage, it is targeted analysis built to answer your individual problem or question.",
   },
   {
     q: "How is a geopolitical analyst different from a general consultant?",
@@ -79,7 +79,7 @@ const faqs: Faq[] = [
   },
   {
     q: "How do you handle confidentiality?",
-    a: "Everything you share with me stays with me. I will not discuss you, your organisation, or your operations with any third party. Not even my cat. I am happy to sign your confidentiality agreement.",
+    a: "Everything you share with me stays with me. I will not discuss you, your organisation, or your operations with any third party. I am happy to sign your confidentiality agreement.",
   },
 ];
 
@@ -113,7 +113,7 @@ export default async function HomePage() {
               letterSpacing: "-.01em",
             }}
           >
-            Geopolitical <em>advisory</em> for decisions that <em>can&rsquo;t wait</em>.
+            Geopolitical <em>advisory</em> for decisions that <em>can&rsquo;t wait</em>
           </h1>
         </div>
         <div style={{ borderLeft: "1px solid rgba(34,29,24,.2)", padding: "0 0 8px 28px" }}>
@@ -191,14 +191,17 @@ export default async function HomePage() {
         </div>
         <div style={{ maxWidth: 820 }}>
           <div style={{ fontFamily: serif, fontSize: 32, lineHeight: 1.5, fontWeight: 400 }}>
-            You have a business to run. You do not have time to become a <em>geopolitical analyst</em> in addition to
-            that.
+            Running a business is a full-time job. Yours. Understanding what Moscow, Brussels, and Washington will do
+            next is also a full-time job. <em>A geopolitical analyst&rsquo;s.</em>
           </div>
           <div style={{ fontSize: 18, lineHeight: 1.75, opacity: 0.72, marginTop: 28, maxWidth: 660 }}>
-            An expansion into a new country. An election that will re-price a market. A war moving closer to the
-            European Union. Or no foreign links at all — and your industry is dragged into the global turmoil anyway.
-            You are uncertain how geopolitical events will affect your business, and events change too quickly to
-            follow to the extent an informed decision needs.
+            An expansion into a new country. An election that will re-price a market. An armed conflict that affects
+            the European Union. Or no foreign links at all, yet your industry is pulled into the turmoil anyway.
+          </div>
+          <div style={{ fontSize: 18, lineHeight: 1.75, opacity: 0.72, marginTop: 18, maxWidth: 660 }}>
+            All of these will affect your business. React when they reach the news, and you are choosing from the same
+            options as everyone else. Act before they do, and you are choosing from options your competitors do not
+            know exist.
           </div>
           <div style={{ fontFamily: serif, fontSize: 26, lineHeight: 1.45, marginTop: 32 }}>
             What you need is a <em>geopolitical advisory</em> service.
@@ -258,7 +261,7 @@ export default async function HomePage() {
                 maxWidth: 680,
               }}
             >
-              Born in the Baltics, half a life in Western Europe. They are not the same. <em>It takes one to know one.</em>
+              Born in the Baltics, lived 25 years in Western Europe. <em>Two different Europes, and I understand both inside out.</em>
             </div>
             <div
               className="m-grid1"
@@ -316,7 +319,7 @@ export default async function HomePage() {
                   maxWidth: 700,
                 }}
               >
-                Published author. <em>Live commentator.</em> Weekly analyst.
+                Published author. <em>Live commentator.</em> Weekly analysis.
               </div>
             </div>
             <Link
@@ -371,11 +374,10 @@ export default async function HomePage() {
               </div>
               <div>
                 <div style={{ fontSize: 15, lineHeight: 1.65, opacity: 0.75 }}>
-                  Essays on Russia, European security and the politics of the in-between — for an international
-                  readership.
+                  Essays on Russia, Ukraine, and the crises reshaping European and global security.
                 </div>
                 <a
-                  href="https://www.persuasion.community"
+                  href="https://www.persuasion.community/p/why-russia-is-running-out-of-time"
                   target="_blank"
                   rel="noopener"
                   className="underline-cream"
@@ -489,9 +491,6 @@ export default async function HomePage() {
           >
             Book a call
           </CalLink>
-          <div style={{ fontFamily: serif, fontSize: 19, fontStyle: "italic", opacity: 0.7 }}>
-            Not sure which format fits? A 15-minute call sorts it out.
-          </div>
         </div>
       </div>
 
@@ -605,10 +604,10 @@ export default async function HomePage() {
         >
           <div>
             <div style={{ fontFamily: serif, fontSize: "clamp(23px,3.83vw,46px)", fontWeight: 400, lineHeight: 1.2, maxWidth: 760 }}>
-              This is a dangerous time to be struck by <em>indecision</em>.
+              Indecision costs as much as a <em>wrong decision</em>.
             </div>
             <div style={{ fontSize: 17.5, opacity: 0.7, marginTop: 16, maxWidth: 520, lineHeight: 1.65 }}>
-              Expert advice can save you many sleepless nights and wrong turns.
+              Expert advice saves you sleepless nights and expensive mistakes.
             </div>
           </div>
           <CalLink

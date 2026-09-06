@@ -166,8 +166,7 @@ export default async function WritingPage() {
           <div>
             <div style={{ fontFamily: serif, fontSize: "clamp(20px,3.33vw,40px)", fontStyle: "italic" }}>Liminal Lines</div>
             <div style={{ fontSize: 17.5, opacity: 0.7, marginTop: 14, maxWidth: 560, lineHeight: 1.7 }}>
-              A weekly essay on the politics behind the headlines. Written for people who make decisions, not for
-              people who collect takes.
+              Written for people who make decisions, and for anyone who wants to understand what comes next.
             </div>
           </div>
           <a

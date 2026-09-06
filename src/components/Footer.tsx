@@ -50,7 +50,7 @@ export default function Footer() {
                 <a href="https://inesburrell.substack.com" target="_blank" rel="noopener" className="hover-dim" style={{ textDecoration: "none" }}>
                   Liminal Lines — Substack
                 </a>
-                <a href="https://www.linkedin.com/in/inesburrell" target="_blank" rel="noopener" className="hover-dim" style={{ textDecoration: "none" }}>
+                <a href="https://www.linkedin.com/in/ines-burrell-16a638" target="_blank" rel="noopener" className="hover-dim" style={{ textDecoration: "none" }}>
                   LinkedIn
                 </a>
               </div>

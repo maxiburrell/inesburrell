@@ -108,7 +108,7 @@ export default function ArticleShell({
           <div style={{ width: 84, height: 84, flex: "none", borderRadius: "50%", overflow: "hidden" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/portrait-ines.jpg"
+              src="/images/portrait-ines-face.jpg"
               alt="Ines Burrell"
               style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />

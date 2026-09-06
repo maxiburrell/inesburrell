@@ -153,7 +153,7 @@ export default function ContactPage() {
             <div>
               <div style={directLabel}>LinkedIn</div>
               <a
-                href="https://www.linkedin.com/in/inesburrell"
+                href="https://www.linkedin.com/in/ines-burrell-16a638"
                 target="_blank"
                 rel="noopener"
                 className="card-hover"

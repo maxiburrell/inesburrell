@@ -4,7 +4,7 @@ import CalLink from "@/components/CalLink";
 export const metadata: Metadata = {
   title: "Geopolitical Analyst — About Ines Burrell",
   description:
-    "Ines Burrell is a geopolitical analyst and geopolitical risk analyst covering Russia, Western and Eastern Europe, Eurasia, and European security. Born in the Baltics, half a life lived in Western Europe.",
+    "Ines Burrell is a geopolitical analyst and geopolitical risk analyst covering Russia, Western and Eastern Europe, Eurasia, and European security. Born in the Baltics, 25 years in Western Europe.",
 };
 
 const eyebrow: React.CSSProperties = {
@@ -18,22 +18,22 @@ const eyebrow: React.CSSProperties = {
 const serif = "var(--font-serif),serif";
 
 const stats = [
-  { n: "5", c: "Languages — English, Latvian, Russian, Portuguese, working Ukrainian" },
-  { n: "2", c: "Europes — born in the Baltics, half a life lived in Western Europe" },
+  { n: "5", c: "Languages — English, Latvian, Russian, working Portuguese and Ukrainian" },
+  { n: "2", c: "Europes — born in the Baltics, lived in Western Europe for 25+ years" },
   { n: "MA", c: "International Relations, University of Exeter" },
-  { n: "Live", c: "Published in Persuasion · live broadcast commentary" },
+  { n: "Live", c: "Published in Persuasion: Live commentator. Weekly analysis." },
 ];
 
 const background = [
   { k: "Education", v: "MA International Relations, University of Exeter" },
-  { k: "Previously", v: "Journalist — reporting and analysis across Europe" },
+  { k: "Previously", v: "Journalism and contract work for international institutions, including the Council of Europe and the International Criminal Court" },
   { k: "Published in", v: "Persuasion; weekly at Liminal Lines on Substack" },
-  { k: "Commentary", v: "Live broadcast commentary on Russia and European security" },
+  { k: "Commentary", v: "Live broadcast commentary on Russia, Ukraine, and international security" },
 ];
 
 const promises = [
-  "The analysis you will receive will always be specific to your situation, never generic or recycled.",
-  "I will ask a lot of questions. Your questions will become mine.",
+  "The analysis you receive will always be specific to your situation, never generic or recycled.",
+  "I will ask a lot of questions. Your problems will become mine.",
   "If you have a problem I cannot solve, I will tell you without wasting your time.",
   "All your information is confidential. I will not discuss you or your operations with any third party. Not even my cat.",
   "I have good manners, but I will not lie to you.",
@@ -67,7 +67,7 @@ export default function AboutPage() {
               letterSpacing: "-.01em",
             }}
           >
-            It takes one to <em>know one</em>.
+            Born in one Europe. <em>At home in both.</em>
           </h1>
           <div style={{ fontSize: 18, lineHeight: 1.75, opacity: 0.75, marginTop: 24, maxWidth: 560 }}>
             I am a geopolitical analyst and geopolitical risk advisor with deep expertise in Western and Eastern
@@ -77,7 +77,7 @@ export default function AboutPage() {
         <div style={{ height: "min(520px,115vw)" }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/portrait-ines.jpg"
+            src="/images/portrait-ines-colour.jpg"
             alt="Portrait of Ines Burrell"
             style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
           />
@@ -103,9 +103,10 @@ export default function AboutPage() {
             Western European, because this is where I have lived half my life. <em>They are not the same.</em>
           </div>
           <p style={{ fontSize: 18, lineHeight: 1.8, opacity: 0.72, margin: "28px 0 0" }}>
-            Eastern Europe reads its large neighbour out of necessity, and reads it well. Western Europe has the luxury
-            of distance — and pays for it in surprise. My work sits between the two: the closeness of one, the
-            analytical frame of the other. I speak five languages, and I have spent a career listening in all of them.
+            Eastern Europe reads its large neighbour out of necessity and reads it well. Western Europe has the luxury
+            of distance and the handicap of an incomplete picture. My work uses the benefits of both: immediate and
+            personal knowledge from one and analytical detachment from the other. I speak five languages, and I have
+            spent a lifetime navigating between them.
           </p>
         </div>
       </div>
@@ -146,8 +147,8 @@ export default function AboutPage() {
           <div style={{ height: "min(340px,50vw)", marginTop: 36 }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/ph-problem.jpg"
-              alt="Archive detail"
+              src="/images/portrait-ines-thinking.jpg"
+              alt="Ines Burrell"
               style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
             />
           </div>
@@ -222,7 +223,7 @@ export default function AboutPage() {
         >
           <div>
             <div style={{ fontFamily: serif, fontSize: "clamp(22px,3.67vw,44px)", fontWeight: 400, lineHeight: 1.2, maxWidth: 760 }}>
-              If your decision depends on understanding a faraway ground — <em>let&rsquo;s talk</em>.
+              If your decision depends on events elsewhere, <em>let&rsquo;s talk</em>.
             </div>
           </div>
           <CalLink

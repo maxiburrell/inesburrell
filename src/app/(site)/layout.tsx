@@ -14,7 +14,7 @@ const personJsonLd = {
   jobTitle: "Geopolitical analyst and advisor",
   knowsLanguage: ["en", "lv", "ru", "pt", "uk"],
   alumniOf: { "@type": "CollegeOrUniversity", name: "University of Exeter" },
-  sameAs: ["https://inesburrell.substack.com"],
+  sameAs: ["https://inesburrell.substack.com", "https://www.linkedin.com/in/ines-burrell-16a638"],
 };
 
 const serviceJsonLd = {
