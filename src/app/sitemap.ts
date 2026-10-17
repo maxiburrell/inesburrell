@@ -15,7 +15,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   try {
     const posts = await client.fetch<{ slug: string; publishedAt: string }[]>(
-      groq`*[_type == "post" && defined(slug.current)]{ "slug": slug.current, publishedAt }`,
+      groq`*[_type == "post" && contentMode != "link" && defined(slug.current)]{ "slug": slug.current, publishedAt }`,
     );
     return [
       ...staticPages,

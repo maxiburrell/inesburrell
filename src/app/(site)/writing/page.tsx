@@ -81,7 +81,7 @@ export default async function WritingPage() {
       {featured && (
         <div style={{ maxWidth: 1440, margin: "0 auto", padding: "0 clamp(24px,5vw,72px)" }}>
           <Link
-            href={`/writing/${featured.slug}`}
+            href={featured.href ?? `/writing/${featured.slug}`}
             className="m-grid1 card-hover"
             style={{
               display: "grid",
@@ -135,10 +135,10 @@ export default async function WritingPage() {
                 }}
               >
                 <span style={{ color: "#6e222d", fontSize: 11, letterSpacing: ".18em", textTransform: "uppercase", fontWeight: 600 }}>
-                  Read the essay →
+                  {featured.href ? `Read in ${featured.sourcePublication ?? "Substack"} →` : "Read the essay →"}
                 </span>
                 <span style={{ fontSize: 12, letterSpacing: ".14em", textTransform: "uppercase", opacity: 0.55, fontWeight: 600 }}>
-                  {featured.readingTime} read
+                  {featured.href ? "" : `${featured.readingTime} read`}
                 </span>
               </div>
             </div>
@@ -147,7 +147,7 @@ export default async function WritingPage() {
       )}
 
       {/* filters + grid */}
-      <ArchiveGrid essays={rest.length ? rest : essays} />
+      <ArchiveGrid essays={rest} />
 
       {/* substack band */}
       <div style={{ background: "#40161d", color: "#f8f4ec" }}>

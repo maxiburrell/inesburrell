@@ -8,6 +8,9 @@ export const postFields = groq`
   heroImage,
   publishedAt,
   originalSubstackUrl,
+  contentMode,
+  sourcePublication,
+  externalImageUrl,
   "categories": categories[]->{title, "slug": slug.current},
   "readingTime": round(length(pt::text(body)) / 5 / 200)
 `;

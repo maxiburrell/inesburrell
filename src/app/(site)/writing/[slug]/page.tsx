@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import type { PortableTextBlock } from "@portabletext/types";
 import ArticleShell from "@/components/ArticleShell";
 import ArticleBody from "@/components/ArticleBody";
@@ -9,6 +9,7 @@ import { formatDate } from "@/lib/posts";
 
 type SanityPost = {
   _id: string;
+  contentMode?: string;
   title: string;
   slug: string;
   excerpt?: string;
@@ -34,6 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const post = await sanityFetch<SanityPost | null>({ query: postBySlugQuery, params: { slug } });
   if (!post) return {};
+  if (post.contentMode === "link") return { title: post.title, robots: { index: false } };
   return {
     title: post.seo?.metaTitle ?? post.title,
     description: post.seo?.metaDescription ?? post.excerpt,
@@ -53,6 +55,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
   const post = await sanityFetch<SanityPost | null>({ query: postBySlugQuery, params: { slug } });
   if (!post) notFound();
+  if (post.contentMode === "link" && post.originalSubstackUrl) redirect(post.originalSubstackUrl);
 
   const categoryIds =
     (post.categories ?? []).length > 0
@@ -91,6 +94,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         related={related.map((r) => ({
           title: r.title,
           slug: r.slug,
+          href: r.contentMode === "link" ? r.originalSubstackUrl : undefined,
           category: r.categories?.[0]?.title ?? "Analysis",
           readingTime: `${Math.max(1, r.readingTime ?? 5)} min`,
         }))}

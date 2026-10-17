@@ -10,6 +10,13 @@ export const post = defineType({
   ],
   fields: [
     defineField({
+      name: "contentMode", title: "Article display", type: "string",
+      options: { list: [{ title: "Full essay", value: "article" }, { title: "Link to original", value: "link" }] },
+      initialValue: "article", group: "content",
+    }),
+    defineField({ name: "sourcePublication", title: "Publication", type: "string", group: "content" }),
+    defineField({ name: "externalImageUrl", title: "Feed image", type: "url", group: "content" }),
+    defineField({
       name: "title",
       type: "string",
       validation: (rule) => rule.required(),
@@ -61,6 +68,7 @@ export const post = defineType({
     }),
     defineField({
       name: "body",
+      hidden: ({ parent }) => parent?.contentMode === "link",
       type: "array",
       of: [
         {
@@ -105,14 +113,15 @@ export const post = defineType({
         },
         { type: "object", name: "divider", title: "Divider", fields: [defineField({ name: "style", type: "string", hidden: true, initialValue: "line" })], preview: { prepare: () => ({ title: "· · ·", subtitle: "Divider" }) } },
       ],
-      validation: (rule) => rule.required(),
+      validation: (rule) => rule.custom((value, context) => context.document?.contentMode === "link" || value ? true : "An essay needs a body"),
       group: "content",
     }),
     defineField({
       name: "originalSubstackUrl",
-      title: "Original Substack URL",
+      title: "Original article URL",
       type: "url",
-      description: "If this essay was first published on Liminal Lines.",
+      description: "Original article on Liminal Lines or Persuasion. Required for link cards.",
+      validation: (rule) => rule.uri({ scheme: ["https"] }).custom((value, context) => context.document?.contentMode !== "link" || value ? true : "A link card needs its original article URL"),
       group: "content",
     }),
     defineField({

@@ -10,10 +10,16 @@ export type EssayCard = {
   readingTime: string;
   image: string;
   excerpt?: string;
+  href?: string;
+  sourcePublication?: string;
 };
 
 type SanityPost = {
   _id: string;
+  contentMode?: string;
+  originalSubstackUrl?: string;
+  sourcePublication?: string;
+  externalImageUrl?: string;
   title: string;
   slug: string;
   excerpt?: string;
@@ -34,13 +40,15 @@ export function formatDate(iso: string): string {
 function toCard(p: SanityPost): EssayCard {
   return {
     title: p.title,
+    href: p.contentMode === "link" ? p.originalSubstackUrl : undefined,
+    sourcePublication: p.sourcePublication,
     slug: p.slug,
     category: p.categories?.[0]?.title ?? "Analysis",
     date: formatDate(p.publishedAt),
     readingTime: `${Math.max(1, p.readingTime ?? 5)} min`,
     image: p.heroImage?.asset
       ? urlFor(p.heroImage).width(720).height(400).fit("crop").url()
-      : "/images/ph-essay-1.jpg",
+      : p.externalImageUrl ?? "/images/ph-essay-1.jpg",
     excerpt: p.excerpt,
   };
 }

@@ -27,7 +27,7 @@ export default function ArticleShell({
   heroImage?: string;
   heroCaption?: string;
   children: ReactNode;
-  related: { title: string; slug?: string | null; category: string; readingTime: string }[];
+  related: { title: string; slug?: string | null; href?: string; category: string; readingTime: string }[];
 }) {
   return (
     <>
@@ -180,7 +180,7 @@ export default function ArticleShell({
             {related.map((r) => (
               <Link
                 key={r.title}
-                href={r.slug ? `/writing/${r.slug}` : "/writing"}
+                href={r.href ?? (r.slug ? `/writing/${r.slug}` : "/writing")}
                 className="hover-dim"
                 style={{
                   display: "flex",

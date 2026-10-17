@@ -42,7 +42,7 @@ export default function ArchiveGrid({ essays }: { essays: EssayCard[] }) {
         {shown.map((e) => (
           <Link
             key={e.title}
-            href={`/writing/${e.slug}`}
+            href={e.href ?? `/writing/${e.slug}`}
             className="card-hover"
             style={{
               background: "#fff",
@@ -76,7 +76,7 @@ export default function ArchiveGrid({ essays }: { essays: EssayCard[] }) {
               >
                 <span style={{ fontSize: 13, opacity: 0.6 }}>{e.date}</span>
                 <span style={{ fontSize: 12, letterSpacing: ".14em", textTransform: "uppercase", opacity: 0.55, fontWeight: 600 }}>
-                  {e.readingTime} read
+                  {e.href ? `Read in ${e.sourcePublication ?? "Substack"} →` : `${e.readingTime} read`}
                 </span>
               </div>
             </div>

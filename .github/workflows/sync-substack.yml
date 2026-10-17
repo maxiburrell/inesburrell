@@ -1,24 +1,30 @@
-name: Sync Substack essays into Sanity
+name: Sync writing links from Substack and Persuasion
 
 on:
   schedule:
-    # Every 3 hours (UTC). GitHub may delay scheduled runs by a few minutes.
+    # Every 3 hours (UTC). GitHub may delay scheduled runs.
     - cron: "0 */3 * * *"
   workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: writing-feed-sync
+  cancel-in-progress: false
 
 jobs:
   sync:
     runs-on: ubuntu-latest
+    timeout-minutes: 3
     steps:
-      - name: Call the site's sync endpoint
+      - name: Import new article cards
+        env:
+          SYNC_SITE_URL: ${{ secrets.SYNC_SITE_URL }}
+          SYNC_SECRET: ${{ secrets.SYNC_SECRET }}
+          SANITY_WRITE_TOKEN: ${{ secrets.SANITY_WRITE_TOKEN }}
         run: |
-          response=$(curl --silent --show-error -X POST \
-            "${{ secrets.SYNC_SITE_URL }}/api/sync-substack" \
-            -H "Authorization: Bearer ${{ secrets.SYNC_SECRET }}" \
-            -H "X-Sanity-Token: ${{ secrets.SANITY_WRITE_TOKEN }}" \
-            -w "\n%{http_code}")
-          body=$(echo "$response" | sed '$d')
-          code=$(echo "$response" | tail -n1)
-          echo "HTTP $code"
-          echo "$body"
-          [ "$code" = "200" ] || exit 1
+          curl --fail-with-body --silent --show-error --max-time 90 \
+            -X POST "${SYNC_SITE_URL%/}/api/sync-substack" \
+            -H "Authorization: Bearer $SYNC_SECRET" \
+            -H "X-Sanity-Token: $SANITY_WRITE_TOKEN"
